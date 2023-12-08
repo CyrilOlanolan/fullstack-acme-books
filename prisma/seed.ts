@@ -5,7 +5,7 @@ export const seed = async () => {
 };
 
 const seedBooks = async () => {
-  const book = await prisma.books.upsert({
+  await prisma.books.upsert({
     where: {
       id: 1,
     },
@@ -14,6 +14,8 @@ const seedBooks = async () => {
       id: 1,
       title: "The Ballad of Songbirds and Snakes",
       author: "Suzanne Collins",
+      rating: 4,
+      isAvailable: true,
       summary: "Summary 1",
     },
   });
@@ -27,6 +29,8 @@ const seedBooks = async () => {
       id: 2,
       title: "Iron Flame",
       author: "Rebecca Yarros",
+      rating: 4.5,
+      isAvailable: true,
       summary: "Summary 2",
     },
   });
@@ -40,6 +44,8 @@ const seedBooks = async () => {
       id: 3,
       title: "The Little Liar",
       author: "Mitch Albom",
+      rating: 4.8,
+      isAvailable: false,
       summary: "Summary 3",
     },
   });

@@ -11,10 +11,12 @@ datasource db {
 }
 
 model Books {
-  id        Int      @id @default(autoincrement())
-  title     String
-  author    String
-  summary   String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          Int      @id @default(autoincrement())
+  title       String
+  author      String
+  rating      Float    @default(0)
+  isAvailable Boolean  @default(true)
+  summary     String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
