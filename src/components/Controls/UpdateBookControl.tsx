@@ -1,10 +1,6 @@
 "use client";
 
-import { revalidateByTag } from "@/app/actions";
-import { BookDto } from "@/dto/books.dto";
-import axios from "axios";
-import React, { useState } from "react";
-import { useMutation } from "react-query";
+import React, { useEffect, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -13,20 +9,30 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../ui/Dialog";
-import { Input, Label } from "../ui/FormComponents";
+import { Label, Input } from "../ui/FormComponents";
+import { revalidateByTag } from "@/app/actions";
+import axios from "axios";
+import { BookDto, BookType } from "@/dto/books.dto";
+import { useMutation, useQuery } from "react-query";
 
-const AddBookControl = () => {
+const UpdateBookControl = ({ id }: { id: number }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const { data, refetch } = useQuery("book", () =>
+    axios
+      .get(`${process.env.NEXT_PUBLIC_API_URL}/api/books/${id}`)
+      .then((res) => res.data as BookType)
+  );
 
   const mutation = useMutation(
     (props: BookDto) =>
       axios
-        .post(`${process.env.NEXT_PUBLIC_API_URL}/api/books`, props)
+        .put(`${process.env.NEXT_PUBLIC_API_URL}/api/books/${id}`, props)
         .then((res) => res.data)
         .catch((error) => error.response),
     {
       onSuccess: () => {
-        revalidateByTag("books");
+        revalidateByTag("book");
         setIsOpen(false);
       },
       onError: () => {
@@ -34,6 +40,10 @@ const AddBookControl = () => {
       },
     }
   );
+
+  useEffect(() => {
+    refetch();
+  }, [isOpen, refetch]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -55,7 +65,7 @@ const AddBookControl = () => {
   return (
     <Dialog onOpenChange={handleOpen} open={isOpen}>
       <DialogTrigger asChild>
-        <button>+ ADD</button>
+        <button>Update</button>
       </DialogTrigger>
       <DialogContent className="bg-grey font-sans text-dark-green">
         <DialogHeader>
@@ -68,12 +78,22 @@ const AddBookControl = () => {
         <form className="grid grid-cols-1 font-sans" onSubmit={handleSubmit}>
           <div className="mb-3 grid grid-cols-1 gap-1">
             <Label htmlFor="title">Title</Label>
-            <Input type="text" name="bookTitle" required />
+            <Input
+              type="text"
+              name="bookTitle"
+              required
+              defaultValue={data?.title}
+            />
           </div>
 
           <div className="mb-3 grid grid-cols-1 gap-1">
             <Label htmlFor="author">Author</Label>
-            <Input type="text" name="author" required />
+            <Input
+              type="text"
+              name="author"
+              required
+              defaultValue={data?.author}
+            />
           </div>
 
           <div className="mb-3 grid grid-cols-1 gap-1">
@@ -83,6 +103,7 @@ const AddBookControl = () => {
               rows={5}
               name="summary"
               required
+              defaultValue={data?.summary}
             />
           </div>
 
@@ -93,8 +114,8 @@ const AddBookControl = () => {
               name="rating"
               min={0}
               max={5}
-              defaultValue={5}
               required
+              defaultValue={data?.rating}
             />
           </div>
 
@@ -103,9 +124,9 @@ const AddBookControl = () => {
             <Input
               type="checkbox"
               name="availability"
-              defaultChecked
               required
               className="w-4 h-4"
+              defaultChecked={data?.isAvailable}
             />
           </div>
 
@@ -113,7 +134,7 @@ const AddBookControl = () => {
             type="submit"
             className="bg-dark-green py-2 px-4 w-full rounded-md text-center text-grey"
           >
-            {mutation.isLoading ? "Loading..." : "Submit"}
+            {mutation.isLoading ? "Loading..." : "Update"}
           </button>
         </form>
       </DialogContent>
@@ -121,4 +142,4 @@ const AddBookControl = () => {
   );
 };
 
-export default AddBookControl;
+export default UpdateBookControl;

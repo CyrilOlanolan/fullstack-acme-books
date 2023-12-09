@@ -3,7 +3,7 @@ export type BookDto = {
   summary: string;
   title: string;
   rating: number;
-  isAvailable: string;
+  isAvailable: boolean;
 };
 
 export type BookType = {

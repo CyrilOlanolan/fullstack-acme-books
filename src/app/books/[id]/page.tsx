@@ -1,3 +1,5 @@
+import DeleteBookControl from "@/components/Controls/DeleteBookControl";
+import UpdateBookControl from "@/components/Controls/UpdateBookControl";
 import Back from "@/components/ui/Back";
 import Stars from "@/components/ui/Stars";
 import { type BookType } from "@/dto/books.dto";
@@ -9,7 +11,12 @@ const BookPage = async (props: {
   };
 }) => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/books/${props.params.id}`
+    `${process.env.NEXT_PUBLIC_API_URL}/api/books/${props.params.id}`,
+    {
+      next: {
+        tags: ["book"],
+      },
+    }
   );
 
   if (!response.ok) {
@@ -24,6 +31,8 @@ const BookPage = async (props: {
 
   return (
     <main className="bg-dark-green">
+      <UpdateBookControl id={book.id} />
+      <DeleteBookControl id={book.id} />
       <div className="px-6 sm:px-12 text-grey">
         <div className="py-12 supports-[min-height:100dvh]:min-h-[100dvh] min-h-[100vh] flex flex-col">
           <div className="flex flex-row justify-between">
