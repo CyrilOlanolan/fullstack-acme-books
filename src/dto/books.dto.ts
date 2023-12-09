@@ -1,3 +1,11 @@
+export type BookDto = {
+  author: string;
+  summary: string;
+  title: string;
+  rating: number;
+  isAvailable: string;
+};
+
 export type BookType = {
   id: number;
   title: string;

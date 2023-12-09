@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { roboto } from "./fonts";
 import { italiana } from "./fonts";
+import { QueryClientWrapper } from "@/lib/query";
 
 export const metadata: Metadata = {
   title: "Acme Books",
@@ -16,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.variable} ${italiana.variable}`}>
-        {children}
+        <QueryClientWrapper>{children}</QueryClientWrapper>
       </body>
     </html>
   );
