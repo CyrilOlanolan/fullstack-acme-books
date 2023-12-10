@@ -13,6 +13,7 @@ export default async function Home() {
           Welcome to the country&apos;s first online bookstore!
         </h2>
       </div>
+
       <AddBookControl />
       <Books />
     </main>

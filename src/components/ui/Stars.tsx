@@ -27,6 +27,7 @@ const Stars: FC<Props> = ({
         viewBox={`0 0 25 25`}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        data-testid={star > 0 && "filled-star"}
       >
         <defs>
           <linearGradient id={`filling--${fillPercentage}`}>
