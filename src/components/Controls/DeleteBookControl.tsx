@@ -55,7 +55,9 @@ const DeleteBookControl = ({ id }: { id: number }) => {
   return (
     <Dialog onOpenChange={handleOpen} open={isOpen}>
       <DialogTrigger asChild>
-        <button>Delete</button>
+        <button className="px-4 py-2 border border-red-200 rounded-full text-red-200 font-sans uppercase tracking-widest text-sm transition-all duration-300 ease hover:bg-red-200 hover:text-dark-green pointer">
+          Delete
+        </button>
       </DialogTrigger>
       <DialogContent className="bg-grey font-sans text-dark-green">
         <DialogHeader>

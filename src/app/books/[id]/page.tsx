@@ -31,8 +31,6 @@ const BookPage = async (props: {
 
   return (
     <main className="bg-dark-green">
-      <UpdateBookControl id={book.id} />
-      <DeleteBookControl id={book.id} />
       <div className="px-6 sm:px-12 text-grey">
         <div className="py-12 supports-[min-height:100dvh]:min-h-[100dvh] min-h-[100vh] flex flex-col">
           <div className="flex flex-row justify-between">
@@ -72,6 +70,11 @@ const BookPage = async (props: {
           </div>
           <p className="font-sans mt-3">{book.rating} / 5 | GoodReads</p>
         </div>
+      </div>
+
+      <div className="grid grid-cols-1 gap-y-2 w-full px-6 mx-auto pb-12 md:max-w-[18.75rem] md:grid-cols-2 gap-x-3">
+        <UpdateBookControl id={book.id} />
+        <DeleteBookControl id={book.id} />
       </div>
     </main>
   );

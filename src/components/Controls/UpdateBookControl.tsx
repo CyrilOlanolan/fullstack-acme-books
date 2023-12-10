@@ -65,7 +65,9 @@ const UpdateBookControl = ({ id }: { id: number }) => {
   return (
     <Dialog onOpenChange={handleOpen} open={isOpen}>
       <DialogTrigger asChild>
-        <button>Update</button>
+        <button className="px-4 py-2 border border-grey rounded-full text-grey font-sans uppercase tracking-widest text-sm transition-all duration-300 ease hover:bg-grey hover:text-dark-green pointer">
+          Update
+        </button>
       </DialogTrigger>
       <DialogContent className="bg-grey font-sans text-dark-green">
         <DialogHeader>

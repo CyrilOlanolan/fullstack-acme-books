@@ -55,7 +55,9 @@ const AddBookControl = () => {
   return (
     <Dialog onOpenChange={handleOpen} open={isOpen}>
       <DialogTrigger asChild>
-        <button>+ ADD</button>
+        <button className="block mx-auto mb-12 font-bold font-sans px-4 py-2 bg-grey hover:bg-grey-dark transition-colors duration-300 rounded-md shadow-sm text-foreground">
+          + ADD A BOOK
+        </button>
       </DialogTrigger>
       <DialogContent className="bg-grey font-sans text-dark-green">
         <DialogHeader>

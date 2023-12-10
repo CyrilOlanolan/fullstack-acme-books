@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable} ${italiana.variable}`}>
+      <body className={`${roboto.variable} ${italiana.variable} bg-background`}>
         <QueryClientWrapper>{children}</QueryClientWrapper>
       </body>
     </html>

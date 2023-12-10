@@ -12,6 +12,7 @@ const config: Config = {
         background: "#FFFDFB",
         foreground: "#2F2615",
         grey: "#ECEFE8",
+        "grey-dark": "#cdd5c3",
         "dark-green": "#383E31",
       },
       fontFamily: {
