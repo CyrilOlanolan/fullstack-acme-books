@@ -40,7 +40,7 @@ const AddBookControl = () => {
     const data = {
       title: event.currentTarget.bookTitle.value,
       author: event.currentTarget.author.value,
-      isAvailable: event.currentTarget.availability.value.checked,
+      isAvailable: event.currentTarget.availability.checked,
       rating: parseFloat(event.currentTarget.rating.value),
       summary: event.currentTarget.summary.value,
     };
@@ -107,7 +107,6 @@ const AddBookControl = () => {
               type="checkbox"
               name="availability"
               defaultChecked
-              required
               className="w-4 h-4"
             />
           </div>

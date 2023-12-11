@@ -47,10 +47,11 @@ const UpdateBookControl = ({ id }: { id: number }) => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     const data = {
       title: event.currentTarget.bookTitle.value,
       author: event.currentTarget.author.value,
-      isAvailable: event.currentTarget.availability.value.checked,
+      isAvailable: event.currentTarget.availability.checked,
       rating: parseFloat(event.currentTarget.rating.value),
       summary: event.currentTarget.summary.value,
     };
@@ -127,7 +128,6 @@ const UpdateBookControl = ({ id }: { id: number }) => {
             <Input
               type="checkbox"
               name="availability"
-              required
               className="w-4 h-4"
               defaultChecked={data?.isAvailable}
             />
