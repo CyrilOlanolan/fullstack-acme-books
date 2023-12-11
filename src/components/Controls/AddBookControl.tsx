@@ -95,6 +95,7 @@ const AddBookControl = () => {
               name="rating"
               min={0}
               max={5}
+              step=".1"
               defaultValue={5}
               required
             />
