@@ -14,6 +14,12 @@ Then, run the development server
 npm run dev
 ```
 
+To run tests,
+
+```bash
+npm run test
+```
+
 ## Tools
 
 - **Next.js 14** - frontend & backend framework
