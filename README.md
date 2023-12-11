@@ -18,6 +18,7 @@ npm run dev
 
 - **Next.js 14** - frontend & backend framework
 - **Prisma** - ORM
+- **SQLite3** - Database
 - **TypeScript** - programming language
 - **React Query** - for caching, revalidation, and flexibility on requests
 - **Axios** - for client-side API requests
