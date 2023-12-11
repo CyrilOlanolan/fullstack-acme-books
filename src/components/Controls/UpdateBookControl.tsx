@@ -117,6 +117,7 @@ const UpdateBookControl = ({ id }: { id: number }) => {
               min={0}
               max={5}
               required
+              step=".1"
               defaultValue={data?.rating}
             />
           </div>
