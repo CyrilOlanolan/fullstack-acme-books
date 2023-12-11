@@ -61,7 +61,7 @@ const BookPage = async (props: {
           <p className="font-sans max-w-4xl">{book.summary}</p>
         </div>
 
-        <div className="pt-6 pb-12">
+        <div className="py-6">
           <p className="tracking-widest font-sans font-light text-left text-md sm:text-lg md:text-xl lg:text-2xl mb-4">
             RATING
           </p>
@@ -69,6 +69,15 @@ const BookPage = async (props: {
             <Stars color="#ECEFE8" size="2.5rem" rating={book.rating} />
           </div>
           <p className="font-sans mt-3">{book.rating} / 5 | GoodReads</p>
+        </div>
+
+        <div className="pt-6 pb-12">
+          <p className="tracking-widest font-sans font-light text-left text-md sm:text-lg md:text-xl lg:text-2xl mb-4">
+            AVAILABILITY
+          </p>
+          <p className="font-sans mt-3">
+            {book.isAvailable ? "AVAILABLE" : "UNAVAILABLE"}
+          </p>
         </div>
       </div>
 
